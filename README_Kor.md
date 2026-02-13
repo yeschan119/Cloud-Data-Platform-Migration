@@ -34,6 +34,8 @@ Azure 기반 데이터 처리 및 리포팅 시스템을 AWS 네이티브 아키
 
 Event → Data Lake → Data Factory ETL → Azure SQL → Power BI
 
+<img width="3285" height="1820" alt="Azure" src="https://github.com/user-attachments/assets/dc3cddc0-3508-46ef-84c3-fac71857be96" />
+
 ### 특징
 
 - 배치 중심 처리
@@ -45,6 +47,8 @@ Event → Data Lake → Data Factory ETL → Azure SQL → Power BI
 ---
 
 ## 신규 아키텍처 (AWS)
+
+<img width="624" height="801" alt="AWS" src="https://github.com/user-attachments/assets/f4be7eb7-11e3-4376-a030-fa928d1814d7" />
 
 ### 핵심 구성 요소
 
