@@ -9,7 +9,7 @@ This was not a lift-and-shift migration — it was a full redesign of the data p
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 The legacy system was built on:
 
@@ -30,7 +30,7 @@ The goal was to migrate and improve the system using AWS-native services while a
 
 ---
 
-## 🔵 Legacy Architecture (Azure)
+## Legacy Architecture (Azure)
 
 ### Flow
 
@@ -46,7 +46,7 @@ Event → Data Lake → Data Factory ETL → Azure SQL → Power BI
 
 ---
 
-## 🟠 Re-Architected Architecture (AWS)
+## Re-Architected Architecture (AWS)
 
 ### Core Components
 
@@ -62,7 +62,7 @@ Event → Data Lake → Data Factory ETL → Azure SQL → Power BI
 
 ---
 
-## 📸 Distributed Snapshot Engine
+## Distributed Snapshot Engine
 
 One of the key architectural improvements was implementing a distributed snapshot generation system.
 
@@ -87,7 +87,7 @@ One of the key architectural improvements was implementing a distributed snapsho
 
 ---
 
-## 🚀 Migration Strategy
+## Migration Strategy
 
 ### 1. Data Layer Migration
 - Azure Data Lake → Amazon S3
@@ -158,7 +158,7 @@ Used DynamoDB to maintain atomic state transitions and prevent duplicate process
 
 ---
 
-## 🧠 Architecture Philosophy
+## Architecture Philosophy
 
 This project focused on:
 
@@ -170,7 +170,7 @@ This project focused on:
 
 ---
 
-## 🎯 Resume Summary
+## Resume Summary
 
 Rebuilt Azure-based ETL and reporting system into AWS distributed analytics architecture.
 
