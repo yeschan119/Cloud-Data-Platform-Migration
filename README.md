@@ -36,6 +36,8 @@ The goal was to migrate and improve the system using AWS-native services while a
 
 Event → Data Lake → Data Factory ETL → Azure SQL → Power BI
 
+<img width="3285" height="1820" alt="Azure" src="https://github.com/user-attachments/assets/0366a4f7-1947-4afb-b665-981aca2ba150" />
+
 ### Characteristics
 
 - Batch-driven ETL
@@ -47,6 +49,8 @@ Event → Data Lake → Data Factory ETL → Azure SQL → Power BI
 ---
 
 ## Re-Architected Architecture (AWS)
+
+<img width="624" height="801" alt="AWS" src="https://github.com/user-attachments/assets/25880a79-8bfc-4213-b925-a4d762d543b4" />
 
 ### Core Components
 
