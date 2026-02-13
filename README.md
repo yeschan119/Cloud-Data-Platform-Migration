@@ -1,6 +1,8 @@
 # Cloud Data Platform Migration  
 ### Azure Data Pipeline → AWS Distributed Analytics Architecture
 
+[한국어 🇰🇷](README.Kor.md)
+
 Re-architected an enterprise Azure-based data processing and reporting system into a scalable, event-driven AWS analytics platform.
 
 This was not a lift-and-shift migration — it was a full redesign of the data pipeline, orchestration model, and reporting engine.
