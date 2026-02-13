@@ -7,7 +7,7 @@ Azure 기반 데이터 처리 및 리포팅 시스템을 AWS 네이티브 아키
 
 ---
 
-## 📌 프로젝트 개요
+## 프로젝트 개요
 
 기존 시스템 구성:
 
@@ -28,7 +28,7 @@ Azure 기반 데이터 처리 및 리포팅 시스템을 AWS 네이티브 아키
 
 ---
 
-## 🔵 기존 아키텍처 (Azure)
+## 기존 아키텍처 (Azure)
 
 ### 데이터 흐름
 
@@ -44,7 +44,7 @@ Event → Data Lake → Data Factory ETL → Azure SQL → Power BI
 
 ---
 
-## 🟠 신규 아키텍처 (AWS)
+## 신규 아키텍처 (AWS)
 
 ### 핵심 구성 요소
 
@@ -60,7 +60,7 @@ Event → Data Lake → Data Factory ETL → Azure SQL → Power BI
 
 ---
 
-## 📸 분산 스냅샷 엔진 설계
+## 분산 스냅샷 엔진 설계
 
 이번 프로젝트의 핵심은 분산 스냅샷 생성 시스템 구현입니다.
 
@@ -85,7 +85,7 @@ Event → Data Lake → Data Factory ETL → Azure SQL → Power BI
 
 ---
 
-## 🚀 마이그레이션 전략
+## 마이그레이션 전략
 
 ### 1. 데이터 계층 전환
 - Azure Data Lake → Amazon S3
@@ -156,7 +156,7 @@ DynamoDB를 활용한 중복 방지 및 상태 관리.
 
 ---
 
-## 🧠 아키텍처 철학
+## 아키텍처 철학
 
 이 프로젝트는 단순한 클라우드 이전이 아닌:
 
@@ -170,7 +170,7 @@ DynamoDB를 활용한 중복 방지 및 상태 관리.
 
 ---
 
-## 🎯 이력서 요약용 문장
+## 이력서 요약용 문장
 
 Azure 기반 ETL 및 리포팅 시스템을 AWS 분산 분석 아키텍처로 재설계.
 
