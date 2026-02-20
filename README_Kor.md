@@ -1,6 +1,8 @@
 # Cloud Data Platform Migration  
 ### Azure 데이터 파이프라인 → AWS 분산 분석 아키텍처 전환
 
+[English](README.md)
+
 Azure 기반 데이터 처리 및 리포팅 시스템을 AWS 네이티브 아키텍처로 재설계한 프로젝트입니다.
 
 단순 마이그레이션이 아닌, 데이터 파이프라인과 리포팅 엔진을 포함한 전체 구조 재설계 프로젝트입니다.
