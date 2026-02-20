@@ -48,7 +48,8 @@ Event → Data Lake → Data Factory ETL → Azure SQL → Power BI
 
 ## 신규 아키텍처 (AWS)
 
-<img width="624" height="801" alt="AWS" src="https://github.com/user-attachments/assets/f4be7eb7-11e3-4376-a030-fa928d1814d7" />
+<img width="845" height="584" alt="ETL" src="https://github.com/user-attachments/assets/bf8e8426-c5b9-4cba-bc81-7383f5ab0430" />
+
 
 ### 핵심 구성 요소
 
