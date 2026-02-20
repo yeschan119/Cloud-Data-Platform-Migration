@@ -3,15 +3,48 @@
 
 [한국어 🇰🇷](README_Kor.md)
 
-Re-architected an enterprise Azure-based data processing and reporting system into a scalable, event-driven AWS analytics platform.
+---
 
-This was not a lift-and-shift migration — it was a full redesign of the data pipeline, orchestration model, and reporting engine.
+## 🚀 Executive Summary
+
+Re-architected an enterprise Azure-based ETL and reporting platform into a **scalable, event-driven AWS analytics system**.
+
+This was not a lift-and-shift migration — it was a **full redesign** of:
+
+- Data pipeline
+- Orchestration model
+- Snapshot generation engine
+- Reporting architecture
+
+### Key Outcomes
+
+- ⚡ Event-driven distributed architecture
+- 📸 Distributed snapshot generation engine
+- ☁ Horizontal scalability
+- 💰 Infrastructure cost optimization
+- 🔄 Metadata-driven orchestration
+- 📊 Power BI → Amazon QuickSight migration
 
 ---
 
-## Project Overview
+## 🏗 High-Level Transformation
 
-The legacy system was built on:
+**Before (Azure)**  
+Event → Data Lake → Data Factory → Azure SQL → Power BI  
+
+**After (AWS)**  
+Event → Lambda → SQS → Step Functions → EC2 Workers → S3 → QuickSight  
+
+---
+
+# 🔍 Detailed Sections (Click to Expand)
+
+---
+
+<details>
+<summary><strong>📦 Legacy Architecture (Azure)</strong></summary>
+
+### Components
 
 - Azure Event Hubs
 - Stream Analytics
@@ -19,18 +52,6 @@ The legacy system was built on:
 - Azure Data Factory
 - Azure SQL Server
 - Power BI
-
-The goal was to migrate and improve the system using AWS-native services while achieving:
-
-- Horizontal scalability
-- Distributed snapshot generation
-- Event-driven orchestration
-- Infrastructure cost optimization
-- Reduced operational complexity
-
----
-
-## Legacy Architecture (Azure)
 
 ### Flow
 
@@ -46,9 +67,12 @@ Event → Data Lake → Data Factory ETL → Azure SQL → Power BI
 - Vendor lock-in
 - Static infrastructure allocation
 
+</details>
+
 ---
 
-## Re-Architected Architecture (AWS)
+<details>
+<summary><strong>☁ Re-Architected Architecture (AWS)</strong></summary>
 
 <img width="845" height="584" alt="ETL" src="https://github.com/user-attachments/assets/7d040226-7696-40ef-90f0-acda229120b0" />
 
@@ -64,9 +88,12 @@ Event → Data Lake → Data Factory ETL → Azure SQL → Power BI
 - Amazon QuickSight (Reporting)
 - Amazon RDS (MySQL)
 
+</details>
+
 ---
 
-## Distributed Snapshot Engine
+<details>
+<summary><strong>📸 Distributed Snapshot Engine</strong></summary>
 
 One of the key architectural improvements was implementing a distributed snapshot generation system.
 
@@ -89,9 +116,12 @@ One of the key architectural improvements was implementing a distributed snapsho
 - Auto scaling & scale-to-zero
 - Cost-efficient rendering
 
+</details>
+
 ---
 
-## Migration Strategy
+<details>
+<summary><strong>🔄 Migration Strategy</strong></summary>
 
 ### 1. Data Layer Migration
 - Azure Data Lake → Amazon S3
@@ -106,9 +136,12 @@ One of the key architectural improvements was implementing a distributed snapsho
 ### 4. Parallelization
 - Introduced SQS-based distributed worker model
 
+</details>
+
 ---
 
-## ⚙️ Technical Highlights
+<details>
+<summary><strong>⚙ Technical Highlights</strong></summary>
 
 ### Event-Driven Architecture
 Replaced scheduled ETL-centric model with event-triggered orchestration.
@@ -120,13 +153,17 @@ Snapshot jobs distributed through SQS and processed via EC2 Auto Scaling.
 Used DynamoDB to maintain atomic state transitions and prevent duplicate processing.
 
 ### Cost Optimization
+
 - Auto scale-down after job completion
 - Snapshot reuse via S3
 - Reduced idle infrastructure cost
 
+</details>
+
 ---
 
-## 📈 Improvements
+<details>
+<summary><strong>📈 Improvements Comparison</strong></summary>
 
 | Area | Azure (Before) | AWS (After) |
 |------|---------------|-------------|
@@ -136,9 +173,12 @@ Used DynamoDB to maintain atomic state transitions and prevent duplicate process
 | Report Engine | Power BI | QuickSight |
 | Cost Model | Static resources | Auto scaling |
 
+</details>
+
 ---
 
-## 🛠 Tech Stack
+<details>
+<summary><strong>🛠 Tech Stack</strong></summary>
 
 ### Backend
 - .NET Core
@@ -160,9 +200,12 @@ Used DynamoDB to maintain atomic state transitions and prevent duplicate process
 - Power BI
 - Azure SQL Server
 
+</details>
+
 ---
 
-## Architecture Philosophy
+<details>
+<summary><strong>🏛 Architecture Philosophy</strong></summary>
 
 This project focused on:
 
@@ -172,9 +215,11 @@ This project focused on:
 - Metadata-driven orchestration
 - Infrastructure efficiency
 
+</details>
+
 ---
 
-## Resume Summary
+## 🎯 Resume Summary
 
 Rebuilt Azure-based ETL and reporting system into AWS distributed analytics architecture.
 
@@ -182,3 +227,17 @@ Rebuilt Azure-based ETL and reporting system into AWS distributed analytics arch
 - Implemented Step Functions orchestration
 - Migrated reporting from Power BI to QuickSight
 - Reduced infrastructure idle cost via auto scaling
+
+---
+
+## 🏁 Conclusion
+
+This migration demonstrates:
+
+- Deep cloud architecture redesign capability
+- Distributed system design
+- Event-driven orchestration
+- Scalable analytics infrastructure
+- Cost-aware cloud engineering
+
+A complete transformation from batch ETL to distributed, event-driven analytics platform.
