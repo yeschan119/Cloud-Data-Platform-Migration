@@ -5,7 +5,7 @@
 
 ---
 
-## 🚀 Executive Summary
+## Executive Summary
 
 Re-architected an enterprise Azure-based ETL and reporting platform into a **scalable, event-driven AWS analytics system**.
 
@@ -27,7 +27,7 @@ This was not a lift-and-shift migration — it was a **full redesign** of:
 
 ---
 
-## 🏗 High-Level Transformation
+## High-Level Transformation
 
 **Before (Azure)**  
 Event → Data Lake → Data Factory → Azure SQL → Power BI  
@@ -219,7 +219,7 @@ This project focused on:
 
 ---
 
-## 🎯 Resume Summary
+## Resume Summary
 
 Rebuilt Azure-based ETL and reporting system into AWS distributed analytics architecture.
 
