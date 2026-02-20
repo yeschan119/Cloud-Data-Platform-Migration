@@ -50,7 +50,7 @@ Event → Data Lake → Data Factory ETL → Azure SQL → Power BI
 
 ## Re-Architected Architecture (AWS)
 
-<img width="624" height="801" alt="AWS" src="https://github.com/user-attachments/assets/25880a79-8bfc-4213-b925-a4d762d543b4" />
+<img width="845" height="584" alt="ETL" src="https://github.com/user-attachments/assets/7d040226-7696-40ef-90f0-acda229120b0" />
 
 ### Core Components
 
