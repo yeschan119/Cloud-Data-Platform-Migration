@@ -18,12 +18,12 @@ This was not a lift-and-shift migration — it was a **full redesign** of:
 
 ### Key Outcomes
 
-- ⚡ Event-driven distributed architecture
-- 📸 Distributed snapshot generation engine
-- ☁ Horizontal scalability
-- 💰 Infrastructure cost optimization
-- 🔄 Metadata-driven orchestration
-- 📊 Power BI → Amazon QuickSight migration
+- Event-driven distributed architecture
+- Distributed snapshot generation engine
+- Horizontal scalability
+- Infrastructure cost optimization
+- Metadata-driven orchestration
+- Power BI → Amazon QuickSight migration
 
 ---
 
