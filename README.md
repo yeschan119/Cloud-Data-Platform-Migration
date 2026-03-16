@@ -1,50 +1,52 @@
 # Cloud Data Platform Migration  
-### Azure Data Pipeline → AWS Distributed Analytics Architecture
+### Azure 데이터 파이프라인 → AWS 분산 분석 아키텍처 전환
 
-[한국어 🇰🇷](README_Kor.md)
+[ENGLISH 🇬🇧](README.en.md)
 
 ---
 
 ## Executive Summary
 
-Re-architected an enterprise Azure-based ETL and reporting platform into a **scalable, event-driven AWS analytics system**.
+Azure 기반 데이터 처리 및 리포팅 시스템을  
+**AWS 네이티브 분산 분석 아키텍처로 전면 재설계한 프로젝트**.
 
-This was not a lift-and-shift migration — it was a **full redesign** of:
+단순 Lift-and-Shift가 아닌,
 
-- Data pipeline
-- Orchestration model
-- Snapshot generation engine
-- Reporting architecture
+- 데이터 파이프라인 구조
+- 오케스트레이션 모델
+- 스냅샷 생성 엔진
+- 리포팅 아키텍처
 
-### Key Outcomes
+를 포함한 **전체 구조 재설계 프로젝트**.
 
-- Event-driven distributed architecture
-- Distributed snapshot generation engine
-- Horizontal scalability
-- Infrastructure cost optimization
-- Metadata-driven orchestration
-- Power BI → Amazon QuickSight migration
+### 핵심 성과
+
+- 이벤트 기반 분산 아키텍처 구축
+- 분산 스냅샷 자동 생성 엔진 설계
+- 수평 확장 구조 구현
+- 인프라 비용 최적화
+- Power BI → Amazon QuickSight 전환
 
 ---
 
-## High-Level Transformation
+## 전환 구조 요약
 
-**Before (Azure)**  
+**기존 (Azure)**  
 Event → Data Lake → Data Factory → Azure SQL → Power BI  
 
-**After (AWS)**  
+**개선 (AWS)**  
 Event → Lambda → SQS → Step Functions → EC2 Workers → S3 → QuickSight  
 
 ---
 
-# 🔍 Detailed Sections (Click to Expand)
+# 상세 내용 (클릭하여 펼치기)
 
 ---
 
 <details>
-<summary><strong>📦 Legacy Architecture (Azure)</strong></summary>
+<summary><strong>📦 기존 아키텍처 (Azure)</strong></summary>
 
-### Components
+### 기존 시스템 구성
 
 - Azure Event Hubs
 - Stream Analytics
@@ -53,39 +55,39 @@ Event → Lambda → SQS → Step Functions → EC2 Workers → S3 → QuickSigh
 - Azure SQL Server
 - Power BI
 
-### Flow
+### 데이터 흐름
 
 Event → Data Lake → Data Factory ETL → Azure SQL → Power BI
 
-<img width="3285" height="1820" alt="Azure" src="https://github.com/user-attachments/assets/0366a4f7-1947-4afb-b665-981aca2ba150" />
+<img width="3285" height="1820" alt="Azure" src="https://github.com/user-attachments/assets/dc3cddc0-3508-46ef-84c3-fac71857be96" />
 
-### Characteristics
+### 특징
 
-- Batch-driven ETL
-- Tight coupling between transformation and reporting
-- Limited scalability for snapshot generation
-- Vendor lock-in
-- Static infrastructure allocation
+- 배치 중심 처리 구조
+- ETL과 리포팅이 강하게 결합된 구조
+- 스냅샷 확장성 부족
+- 정적 인프라 운영
+- Vendor Lock-in 문제
 
 </details>
 
 ---
 
 <details>
-<summary><strong>☁ Re-Architected Architecture (AWS)</strong></summary>
+<summary><strong>☁ 신규 아키텍처 (AWS)</strong></summary>
 
-<img width="845" height="584" alt="ETL" src="https://github.com/user-attachments/assets/7d040226-7696-40ef-90f0-acda229120b0" />
+<img width="845" height="584" alt="ETL" src="https://github.com/user-attachments/assets/bf8e8426-c5b9-4cba-bc81-7383f5ab0430" />
 
-### Core Components
+### 핵심 구성 요소
 
 - .NET API (Trigger Layer)
 - AWS Lambda
-- DynamoDB (Metadata Store)
-- Amazon SQS (Job Queue)
-- AWS Step Functions (Orchestration)
-- EC2 Auto Scaling Workers (Node.js)
-- Amazon S3 (Snapshot Storage)
-- Amazon QuickSight (Reporting)
+- DynamoDB (메타데이터 저장소)
+- Amazon SQS (작업 큐)
+- AWS Step Functions (오케스트레이션)
+- EC2 Auto Scaling Worker (Node.js)
+- Amazon S3 (스냅샷 저장)
+- Amazon QuickSight (리포팅)
 - Amazon RDS (MySQL)
 
 </details>
@@ -93,98 +95,112 @@ Event → Data Lake → Data Factory ETL → Azure SQL → Power BI
 ---
 
 <details>
-<summary><strong>📸 Distributed Snapshot Engine</strong></summary>
+<summary><strong>📸 분산 스냅샷 엔진 설계</strong></summary>
 
-One of the key architectural improvements was implementing a distributed snapshot generation system.
+이번 프로젝트의 핵심 개선 사항은 **분산 스냅샷 생성 시스템 구현**.
 
-### Snapshot Flow
+### 스냅샷 처리 흐름
 
-1. .NET API triggers Lambda
-2. Lambda checks metadata in DynamoDB
-3. If snapshot not exists → create metadata
-4. Job pushed to SQS
-5. Step Functions orchestrate execution
-6. EC2 workers render QuickSight reports
-7. Snapshot stored in S3
-8. Metadata updated in DynamoDB
+1. .NET API → Lambda 트리거
+2. DynamoDB 메타데이터 확인
+3. 스냅샷 미존재 시 메타데이터 생성
+4. SQS에 작업 분배
+5. Step Functions 오케스트레이션 실행
+6. EC2 Worker가 QuickSight 리포트 렌더링
+7. S3에 스냅샷 저장
+8. DynamoDB 상태 업데이트
 
-### Key Design Considerations
+### 설계 핵심 포인트
 
-- Idempotent execution
-- Failure recovery handling
-- Metadata state transitions
-- Auto scaling & scale-to-zero
-- Cost-efficient rendering
+- Idempotent 처리 구조
+- 실패 복구 로직
+- 메타데이터 기반 상태 전이 관리
+- Auto Scaling
+- Scale-to-zero 비용 최적화
+- Snapshot 재사용 전략
 
 </details>
 
 ---
 
 <details>
-<summary><strong>🔄 Migration Strategy</strong></summary>
+<summary><strong>🔄 마이그레이션 전략</strong></summary>
 
-### 1. Data Layer Migration
+### 1️⃣ 데이터 계층 전환
+
 - Azure Data Lake → Amazon S3
 - Azure SQL → Amazon RDS
 
-### 2. Orchestration Redesign
+### 2️⃣ 오케스트레이션 재설계
+
 - Azure Data Factory → Step Functions + Lambda
 
-### 3. Reporting Engine Replacement
+### 3️⃣ 리포팅 엔진 교체
+
 - Power BI → Amazon QuickSight
 
-### 4. Parallelization
-- Introduced SQS-based distributed worker model
+### 4️⃣ 병렬 처리 구조 도입
+
+- SQS 기반 분산 워커 모델 설계
+- EC2 Auto Scaling 기반 작업 처리
 
 </details>
 
 ---
 
 <details>
-<summary><strong>⚙ Technical Highlights</strong></summary>
+<summary><strong>⚙️ 기술적 핵심 요소</strong></summary>
 
-### Event-Driven Architecture
-Replaced scheduled ETL-centric model with event-triggered orchestration.
+### 이벤트 기반 아키텍처
 
-### Horizontal Scalability
-Snapshot jobs distributed through SQS and processed via EC2 Auto Scaling.
+- 스케줄 중심 ETL 모델 제거
+- 이벤트 트리거 기반 실행 구조로 전환
 
-### Metadata Consistency
-Used DynamoDB to maintain atomic state transitions and prevent duplicate processing.
+### 수평 확장 구조
 
-### Cost Optimization
+- SQS 기반 작업 분산
+- EC2 Auto Scaling 적용
+- 작업 완료 후 자동 Scale-down
 
-- Auto scale-down after job completion
-- Snapshot reuse via S3
-- Reduced idle infrastructure cost
+### 메타데이터 일관성 관리
 
-</details>
+- DynamoDB 기반 상태 관리
+- 중복 실행 방지
+- 원자적 상태 전이 관리
 
----
+### 비용 최적화 전략
 
-<details>
-<summary><strong>📈 Improvements Comparison</strong></summary>
-
-| Area | Azure (Before) | AWS (After) |
-|------|---------------|-------------|
-| Snapshot Generation | Not supported | Distributed & Automated |
-| Orchestration | Data Factory | Step Functions |
-| Scalability | Limited | Horizontal Scaling |
-| Report Engine | Power BI | QuickSight |
-| Cost Model | Static resources | Auto scaling |
+- 유휴 인프라 최소화
+- Snapshot 재사용
+- Scale-to-zero 구조
 
 </details>
 
 ---
 
 <details>
-<summary><strong>🛠 Tech Stack</strong></summary>
+<summary><strong>📈 개선 결과 비교</strong></summary>
+
+| 항목 | Azure (기존) | AWS (개선) |
+|------|--------------|------------|
+| 스냅샷 생성 | 미지원 | 분산 자동화 |
+| 오케스트레이션 | Data Factory | Step Functions |
+| 확장성 | 제한적 | 수평 확장 |
+| 리포팅 | Power BI | QuickSight |
+| 비용 모델 | 고정 인프라 | Auto Scaling |
+
+</details>
+
+---
+
+<details>
+<summary><strong>🛠 기술 스택</strong></summary>
 
 ### Backend
 - .NET Core
 - Node.js
 
-### AWS Services
+### AWS
 - Lambda
 - Step Functions
 - EC2
@@ -194,7 +210,7 @@ Used DynamoDB to maintain atomic state transitions and prevent duplicate process
 - QuickSight
 - RDS (MySQL)
 
-### Legacy Stack
+### 기존 Azure
 - Azure Data Factory
 - Azure Data Lake
 - Power BI
@@ -205,39 +221,43 @@ Used DynamoDB to maintain atomic state transitions and prevent duplicate process
 ---
 
 <details>
-<summary><strong>🏛 Architecture Philosophy</strong></summary>
+<summary><strong>🏛 아키텍처 철학</strong></summary>
 
-This project focused on:
+이 프로젝트는 단순한 클라우드 이전이 아닌:
 
-- Event-driven execution
-- Stateless processing
-- Distributed workload management
-- Metadata-driven orchestration
-- Infrastructure efficiency
+- 이벤트 기반 실행 모델
+- Stateless 처리 구조
+- 분산 작업 관리
+- 메타데이터 중심 오케스트레이션
+- 인프라 효율성 극대화
+
+를 목표로 한 **재설계 프로젝트**.
 
 </details>
 
 ---
 
-## Resume Summary
+## 이력서 요약용 문장
 
-Rebuilt Azure-based ETL and reporting system into AWS distributed analytics architecture.
+Azure 기반 ETL 및 리포팅 시스템을 AWS 분산 분석 아키텍처로 재설계.
 
-- Designed SQS-based parallel snapshot engine
-- Implemented Step Functions orchestration
-- Migrated reporting from Power BI to QuickSight
-- Reduced infrastructure idle cost via auto scaling
+- SQS 기반 병렬 스냅샷 엔진 설계
+- Step Functions 오케스트레이션 구현
+- Power BI → QuickSight 전환
+- Auto Scaling 기반 인프라 비용 최적화
 
 ---
 
-## 🏁 Conclusion
+## 🏁 결론
 
-This migration demonstrates:
+이 프로젝트는:
 
-- Deep cloud architecture redesign capability
-- Distributed system design
-- Event-driven orchestration
-- Scalable analytics infrastructure
-- Cost-aware cloud engineering
+- 클라우드 아키텍처 재설계 능력
+- 분산 시스템 설계 경험
+- 이벤트 기반 오케스트레이션 이해
+- 확장 가능한 분석 플랫폼 구축 역량
+- 비용 효율적인 인프라 설계
 
-A complete transformation from batch ETL to distributed, event-driven analytics platform.
+Azure 기반 배치 ETL 시스템을  
+AWS 분산 이벤트 기반 분석 플랫폼으로 전환한  
+엔터프라이즈 수준의 클라우드 아키텍처 프로젝트.
